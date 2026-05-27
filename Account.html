@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Account — Man City Prize Draw</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+    <style>
+      /* ── Account layout ───────────────────────────────── */
+      .account-wrapper {
+        min-height: calc(100vh - 110px);
+        background: var(--paper);
+        padding: 40px 0 80px;
+      }
+
+      /* Mobile menu button */
+      .sidebar-toggle-btn {
+        display: none;
+        position: fixed;
+        bottom: 24px; left: 24px;
+        z-index: 50;
+        width: 48px; height: 48px;
+        background: var(--navy);
+        border: none; border-radius: 50%;
+        color: var(--white);
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(14,27,61,0.35);
+        align-items: center; justify-content: center;
+        transition: background 0.2s;
+      }
+      .sidebar-toggle-btn:hover { background: var(--sky-deep); }
+      @media (max-width: 991px) { .sidebar-toggle-btn { display: flex; } }
+
+      /* Backdrop */
+      .sidebar-backdrop {
+        display: none;
+        position: fixed; inset: 0;
+        background: rgba(0,0,0,0.6);
+        z-index: 40;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .sidebar-backdrop.visible { display: block; }
+      .sidebar-backdrop.active { opacity: 1; }
+
+      /* Sidebar */
+      .account-sidebar {
+        background: var(--navy);
+        border-radius: 14px;
+        padding: 32px 0;
+        color: var(--white);
+        position: sticky;
+        top: 90px;
+      }
+      @media (max-width: 991px) {
+        .account-sidebar {
+          position: fixed;
+          top: 0; left: 0; bottom: 0;
+          width: 280px;
+          border-radius: 0;
+          z-index: 45;
+          overflow-y: auto;
+          transform: translateX(-100%);
+          transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .account-sidebar.open { transform: translateX(0); }
+      }
+
+      .sidebar-avatar {
+        width: 64px; height: 64px;
+        background: var(--sky);
+        border: 3px solid rgba(255,255,255,0.2);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-display);
+        font-size: 26px;
+        color: var(--navy);
+        margin: 0 auto 10px;
+      }
+      .sidebar-name {
+        text-align: center;
+        font-weight: 700;
+        font-size: 15px;
+        color: var(--white);
+        padding: 0 20px 24px;
+        border-bottom: 1px solid var(--line-dark);
+      }
+      .sidebar-name small {
+        display: block;
+        font-size: 12px;
+        color: var(--sky);
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+      .sidebar-nav {
+        list-style: none;
+        padding: 16px 0 0;
+        margin: 0;
+      }
+      .sidebar-nav li a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 28px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.65);
+        text-decoration: none;
+        transition: all 0.2s;
+        border-left: 3px solid transparent;
+      }
+      .sidebar-nav li a i { font-size: 16px; }
+      .sidebar-nav li a:hover { color: var(--sky); background: rgba(108,173,223,0.07); }
+      .sidebar-nav li a.active {
+        color: var(--sky);
+        border-left-color: var(--sky);
+        background: rgba(108,173,223,0.1);
+      }
+      .sidebar-divider {
+        width: 32px; height: 2px;
+        background: var(--gold);
+        margin: 16px auto 0;
+      }
+      .sidebar-logout {
+        padding: 24px 28px 0;
+        border-top: 1px solid var(--line-dark);
+        margin-top: 16px;
+      }
+      .sidebar-logout a {
+        display: flex; align-items: center; gap: 10px;
+        font-size: 12px; font-weight: 600;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: rgba(255,255,255,0.4);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .sidebar-logout a:hover { color: #ff6b6b; }
+
+      /* Content panels */
+      .account-panel { display: none; }
+      .account-panel.active { display: block; }
+
+      .panel-eyebrow {
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--sky-deep);
+        margin-bottom: 6px;
+      }
+      .panel-title {
+        font-size: 28px; font-weight: 800;
+        color: var(--navy);
+        margin-bottom: 4px;
+      }
+      .panel-subtitle {
+        font-size: 14px; color: #6b7a99;
+        margin-bottom: 32px;
+      }
+
+      /* ── Profile form ─────────────────────────────────── */
+      .form-card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 32px;
+      }
+      .form-label {
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--navy-soft);
+        margin-bottom: 6px;
+      }
+      .form-control, .form-select {
+        border: 1.5px solid var(--line);
+        border-radius: 8px;
+        padding: 11px 14px;
+        font-size: 14px;
+        color: var(--navy);
+        background: var(--paper);
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .form-control:focus, .form-select:focus {
+        border-color: var(--sky);
+        box-shadow: 0 0 0 3px rgba(108,173,223,0.18);
+        background: var(--white);
+        outline: none;
+      }
+      .form-control::placeholder { color: #aab4c8; }
+      .marketing-check {
+        background: var(--paper-warm);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 14px 16px;
+        margin-top: 8px;
+      }
+      .form-check-input:checked {
+        background-color: var(--sky-deep);
+        border-color: var(--sky-deep);
+      }
+
+      /* Save success banner */
+      .save-success {
+        display: none;
+        align-items: center; gap: 10px;
+        background: #d1fae5; color: #065f46;
+        border: 1px solid #a7f3d0;
+        border-radius: 10px;
+        padding: 14px 18px;
+        font-size: 14px; font-weight: 600;
+        margin-bottom: 20px;
+      }
+      .save-success.show { display: flex; }
+
+      /* ── Subscriptions ────────────────────────────────── */
+      .next-draw-banner {
+        background: linear-gradient(135deg, var(--sky) 0%, var(--sky-deep) 100%);
+        border-radius: 12px;
+        padding: 20px 24px;
+        display: flex; align-items: center; justify-content: space-between;
+        flex-wrap: wrap; gap: 12px;
+        margin-bottom: 28px;
+      }
+      .next-draw-banner .label {
+        font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+        text-transform: uppercase; color: var(--navy); opacity: 0.7;
+      }
+      .next-draw-banner .value {
+        font-size: 18px; font-weight: 800; color: var(--navy);
+      }
+      .next-draw-banner .entries {
+        font-size: 13px; font-weight: 700; color: var(--navy);
+        background: rgba(14,27,61,0.12); border-radius: 999px;
+        padding: 6px 14px; white-space: nowrap;
+      }
+
+      .sub-summary {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        margin-bottom: 32px;
+      }
+      .sub-summary-header {
+        background: var(--navy);
+        color: var(--white);
+        padding: 18px 28px;
+        display: flex; align-items: center; justify-content: space-between;
+        flex-wrap: wrap; gap: 10px;
+      }
+      .sub-summary-header h5 { margin: 0; font-weight: 800; font-size: 16px; }
+      .sub-badge {
+        background: var(--sky);
+        color: var(--navy);
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 0.1em; text-transform: uppercase;
+        padding: 4px 12px; border-radius: 999px;
+      }
+      .sub-detail-row {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 14px 28px;
+        border-bottom: 1px solid var(--line-soft);
+        font-size: 14px; gap: 12px; flex-wrap: wrap;
+      }
+      .sub-detail-row:last-child { border-bottom: none; }
+      .sub-detail-label { color: #6b7a99; font-weight: 600; }
+      .sub-detail-value { font-weight: 700; color: var(--navy); }
+      .sub-entries-value { color: var(--sky-deep); font-weight: 800; font-size: 16px; }
+
+      .change-sub-title {
+        font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 6px;
+      }
+      .change-sub-rules {
+        font-size: 13px; color: #6b7a99; margin-bottom: 24px;
+        padding-left: 18px;
+      }
+
+      .plan-card {
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        padding: 22px 18px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: var(--white);
+        height: 100%;
+        display: flex; flex-direction: column;
+      }
+      .plan-card:hover { border-color: var(--sky); transform: translateY(-2px); }
+      .plan-card.current { border-color: var(--sky-deep); background: rgba(108,173,223,0.06); }
+      .plan-card.current .plan-name { color: var(--sky-deep); }
+      .plan-name {
+        font-size: 13px; font-weight: 800; letter-spacing: 0.12em;
+        text-transform: uppercase; color: var(--navy); margin-bottom: 8px;
+      }
+      .plan-price {
+        font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 4px;
+      }
+      .plan-price span { font-size: 13px; font-weight: 500; color: #6b7a99; }
+      .plan-tickets {
+        font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+        text-transform: uppercase; color: #6b7a99; margin-bottom: 16px;
+        flex: 1;
+      }
+      .btn-choose {
+        width: 100%;
+        background: var(--navy); color: var(--white);
+        border: 2px solid var(--navy);
+        border-radius: 999px;
+        font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+        text-transform: uppercase; padding: 9px 0;
+        cursor: pointer; transition: all 0.2s;
+      }
+      .btn-choose:hover:not(:disabled) { background: var(--sky-deep); border-color: var(--sky-deep); }
+      .btn-choose:disabled { opacity: 0.6; cursor: not-allowed; }
+      .btn-current {
+        width: 100%;
+        background: transparent; color: var(--sky-deep);
+        border: 2px solid var(--sky-deep);
+        border-radius: 999px;
+        font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+        text-transform: uppercase; padding: 9px 0;
+        cursor: default;
+      }
+
+      /* Cancel flow */
+      .cancel-link {
+        font-size: 13px; color: #aab4c8; text-decoration: underline;
+        display: inline-block; margin-top: 24px; cursor: pointer;
+        background: none; border: none; padding: 0;
+      }
+      .cancel-link:hover { color: #ff6b6b; }
+      .cancel-confirm-box {
+        display: none;
+        background: #fff5f5; border: 1.5px solid #fca5a5;
+        border-radius: 12px; padding: 20px 24px;
+        margin-top: 16px;
+      }
+      .cancel-confirm-box.show { display: block; }
+      .cancel-confirm-box p { font-size: 14px; color: #991b1b; font-weight: 600; margin-bottom: 14px; }
+      .cancelled-notice {
+        display: none;
+        background: #fef3c7; border: 1px solid #fcd34d;
+        border-radius: 10px; padding: 14px 18px;
+        font-size: 14px; color: #92400e; font-weight: 600;
+        margin-top: 16px;
+      }
+      .cancelled-notice.show { display: block; }
+
+      /* ── Payments ─────────────────────────────────────── */
+      .billing-card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 28px;
+        margin-bottom: 28px;
+      }
+      .billing-card h5 { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+      .billing-card p { font-size: 13px; color: #6b7a99; margin-bottom: 18px; }
+
+      .payments-table-wrap {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .payments-table {
+        width: 100%; border-collapse: collapse;
+      }
+      .payments-table thead tr {
+        background: var(--paper-warm);
+        border-bottom: 1px solid var(--line);
+      }
+      .payments-table th {
+        font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+        text-transform: uppercase; color: #6b7a99;
+        padding: 14px 24px;
+      }
+      .payments-table td {
+        padding: 16px 24px;
+        font-size: 14px; color: var(--navy);
+        border-bottom: 1px solid var(--line-soft);
+        vertical-align: middle;
+      }
+      .payments-table tbody tr:last-child td { border-bottom: none; }
+      .payments-table .date-col { color: var(--sky-deep); font-weight: 600; white-space: nowrap; }
+      .payments-table .amount-col { font-weight: 700; text-align: right; white-space: nowrap; }
+      .payments-table .status-col { text-align: right; white-space: nowrap; }
+      .payments-table tfoot td {
+        background: var(--paper-warm);
+        font-size: 13px; font-weight: 800;
+        letter-spacing: 0.06em; text-transform: uppercase;
+        color: var(--navy);
+        padding: 14px 24px;
+        border-top: 2px solid var(--line);
+      }
+      .badge-paid {
+        background: #d1fae5; color: #065f46;
+        font-size: 11px; font-weight: 700; padding: 3px 10px;
+        border-radius: 999px; border: 1px solid #a7f3d0;
+      }
+      .badge-failed {
+        background: #fee2e2; color: #991b1b;
+        font-size: 11px; font-weight: 700; padding: 3px 10px;
+        border-radius: 999px; border: 1px solid #fca5a5;
+      }
+      .badge-pending {
+        background: #fef3c7; color: #92400e;
+        font-size: 11px; font-weight: 700; padding: 3px 10px;
+        border-radius: 999px; border: 1px solid #fcd34d;
+      }
+      .empty-state {
+        padding: 48px 24px; text-align: center;
+        color: #aab4c8; font-size: 14px; font-weight: 600;
+      }
+      .empty-state i { font-size: 36px; display: block; margin-bottom: 10px; }
+
+      @media (max-width: 575px) {
+        .payments-table th, .payments-table td { padding: 12px 14px; font-size: 13px; }
+        .form-card { padding: 20px; }
+        .panel-title { font-size: 22px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Trust strip -->
+    <div class="trust-strip">
+      <div class="container">
+        <span><i class="bi bi-shield-check"></i> Licensed & regulated by the UK Gambling Commission</span>
+        <span><i class="bi bi-check2-circle"></i> Free postal entry route available</span>
+        <span><i class="bi bi-clipboard-check"></i> Independently audited draws</span>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <span class="logo-mark">MC</span>
+          <span class="brand-text">
+            PRIZE DRAW
+            <small>OUR CITY · OUR CHARITY</small>
+          </span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <i class="bi bi-list fs-3"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#Login">Login</a></li>
+            <li class="nav-item"><a class="nav-link active" href="Account.html">Account</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#prizes">Prizes</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#how">How It Works</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#faq">FAQ</a></li>
+          </ul>
+          <div class="d-flex gap-2 align-items-center">
+            <a href="index.html#tiers" class="btn btn-sky">Enter Draw</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile sidebar toggle -->
+    <button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Open account menu">
+      <i class="bi bi-person"></i>
+    </button>
+
+    <!-- Mobile backdrop -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Account layout -->
+    <div class="account-wrapper">
+      <div class="container">
+        <div class="row g-4">
+
+          <!-- Sidebar -->
+          <div class="col-lg-3">
+            <div class="account-sidebar" id="accountSidebar">
+              <div class="sidebar-avatar">KC</div>
+              <div class="sidebar-name">
+                Kevin Cityzen
+                <small>Silver Member</small>
+              </div>
+              <div class="sidebar-divider"></div>
+              <ul class="sidebar-nav">
+                <li>
+                  <a href="#" class="active" data-panel="profile">
+                    <i class="bi bi-person"></i> Profile
+                  </a>
+                </li>
+                <li>
+                  <a href="#" data-panel="subscriptions">
+                    <i class="bi bi-star"></i> Subscriptions
+                  </a>
+                </li>
+                <li>
+                  <a href="#" data-panel="payments">
+                    <i class="bi bi-credit-card"></i> Payments
+                  </a>
+                </li>
+              </ul>
+              <div class="sidebar-logout">
+                <a href="index.html"><i class="bi bi-box-arrow-left"></i> Log out</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="col-lg-9">
+
+            <!-- ── PROFILE PANEL ─────────────────────── -->
+            <div class="account-panel active" id="panel-profile">
+              <p class="panel-eyebrow">My Account</p>
+              <h1 class="panel-title">Welcome, <span id="greet-name">Kevin</span></h1>
+              <p class="panel-subtitle">Keep your details up to date so we can contact you if you win.</p>
+
+              <div id="save-success" class="save-success">
+                <i class="bi bi-check-circle-fill"></i>
+                Your profile has been saved successfully.
+              </div>
+
+              <div class="form-card">
+                <form id="profile-form">
+                  <div class="row g-3">
+                    <div class="col-sm-6">
+                      <label class="form-label">First Name</label>
+                      <input type="text" class="form-control" id="firstName" placeholder="First name" value="Kevin" />
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="form-label">Last Name</label>
+                      <input type="text" class="form-control" placeholder="Last name" value="Cityzen" />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">Address Line 1</label>
+                      <input type="text" class="form-control" placeholder="Etihad Stadium, Etihad Campus" />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">
+                        Address Line 2
+                        <span style="color:#aab4c8;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px"> (optional)</span>
+                      </label>
+                      <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="form-label">City</label>
+                      <input type="text" class="form-control" placeholder="Manchester" />
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="form-label">ZIP / Postal Code</label>
+                      <input type="text" class="form-control" placeholder="M11 3FF" />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">Country</label>
+                      <select class="form-select">
+                        <option selected>United Kingdom of Great Britain and Northern Ireland (the)</option>
+                        <option>Ireland</option>
+                        <option>United States</option>
+                        <option>Australia</option>
+                        <option>Canada</option>
+                        <option>Germany</option>
+                        <option>France</option>
+                        <option>Spain</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">State / Province</label>
+                      <input type="text" class="form-control" placeholder="Greater Manchester" />
+                    </div>
+                    <div class="col-12">
+                      <div class="marketing-check">
+                        <div class="form-check mb-0">
+                          <input class="form-check-input" type="checkbox" id="marketing" checked />
+                          <label class="form-check-label" for="marketing" style="font-size:13px;color:#3d4f72">
+                            I agree to receive future marketing communications, promotions for other prize draws, or have my information shared with the current host and associated charitable causes. To opt out, please untick this box.
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 pt-2">
+                      <button type="submit" class="btn btn-navy px-4" id="save-btn">
+                        Save Profile
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- ── SUBSCRIPTIONS PANEL ───────────────── -->
+            <div class="account-panel" id="panel-subscriptions">
+              <p class="panel-eyebrow">Account</p>
+              <h1 class="panel-title">Monthly Prize Draw</h1>
+              <p class="panel-subtitle">Manage your subscription and ticket entries.</p>
+
+              <!-- Next draw banner -->
+              <div class="next-draw-banner">
+                <div>
+                  <div class="label">Next Draw</div>
+                  <div class="value">28 June 2026 — Squad Signed Shirt</div>
+                </div>
+                <div class="entries">100 tickets entered</div>
+              </div>
+
+              <!-- Current subscription summary -->
+              <div class="sub-summary" id="sub-summary-card">
+                <div class="sub-summary-header">
+                  <h5><i class="bi bi-star-fill me-2" style="color:var(--gold)"></i> <span id="sub-plan-title">Silver</span> Monthly Subscription</h5>
+                  <span class="sub-badge" id="sub-status-badge">Active</span>
+                </div>
+                <div class="sub-detail-row">
+                  <span class="sub-detail-label">Description</span>
+                  <span class="sub-detail-value" id="sub-desc">Silver — Monthly Subscription</span>
+                </div>
+                <div class="sub-detail-row">
+                  <span class="sub-detail-label">Amount</span>
+                  <span class="sub-detail-value" id="sub-amount">£10.00 / month</span>
+                </div>
+                <div class="sub-detail-row">
+                  <span class="sub-detail-label">Includes</span>
+                  <span class="sub-entries-value" id="sub-tickets">50 × tickets</span>
+                </div>
+                <div class="sub-detail-row">
+                  <span class="sub-detail-label">Subscription Renews On</span>
+                  <span class="sub-detail-value">28th June 2026 — 12:00 PM</span>
+                </div>
+                <div class="sub-detail-row">
+                  <span class="sub-detail-label">Season Pass</span>
+                  <span style="font-weight:700;color:var(--sky-deep)">
+                    <span id="sub-season-pass">Silver Season Pass — £120.00 / year</span>
+                    &nbsp;<span class="sub-badge" style="background:rgba(108,173,223,0.15);color:var(--sky-deep)">Active since 19/05/2026</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Change plan -->
+              <div class="change-sub-title">Change Your Subscription</div>
+              <ul class="change-sub-rules">
+                <li>If you <strong>upgrade</strong> to a higher package, your current subscription will end instantly and you will be charged for your new plan in full for the following month.</li>
+                <li>If you <strong>downgrade</strong> to a lower package, your subscription will remain the same until its renewal date at which point it will switch to your new plan.</li>
+              </ul>
+
+              <div class="row g-3" id="plan-cards">
+                <!-- Bronze -->
+                <div class="col-6 col-md-3">
+                  <div class="plan-card" data-plan="bronze" data-price="5" data-tickets="20" data-annual="60">
+                    <div class="plan-name">Bronze</div>
+                    <div class="plan-price">£5<span>/mo</span></div>
+                    <div class="plan-tickets">Includes 20 tickets</div>
+                    <button class="btn-choose">Choose Plan</button>
+                  </div>
+                </div>
+                <!-- Silver -->
+                <div class="col-6 col-md-3">
+                  <div class="plan-card current" data-plan="silver" data-price="10" data-tickets="50" data-annual="120">
+                    <div class="plan-name">Silver</div>
+                    <div class="plan-price">£10<span>/mo</span></div>
+                    <div class="plan-tickets">Includes 50 tickets</div>
+                    <button class="btn-current">Current Plan</button>
+                  </div>
+                </div>
+                <!-- Gold -->
+                <div class="col-6 col-md-3">
+                  <div class="plan-card" data-plan="gold" data-price="15" data-tickets="100" data-annual="180">
+                    <div class="plan-name">Gold</div>
+                    <div class="plan-price">£15<span>/mo</span></div>
+                    <div class="plan-tickets">Includes 100 tickets</div>
+                    <button class="btn-choose">Choose Plan</button>
+                  </div>
+                </div>
+                <!-- Platinum -->
+                <div class="col-6 col-md-3">
+                  <div class="plan-card" data-plan="platinum" data-price="25" data-tickets="150" data-annual="300">
+                    <div class="plan-name">Platinum</div>
+                    <div class="plan-price">£25<span>/mo</span></div>
+                    <div class="plan-tickets">Includes 150 tickets</div>
+                    <button class="btn-choose">Choose Plan</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cancel flow -->
+              <button class="cancel-link" id="cancel-link">Cancel subscription</button>
+
+              <div class="cancel-confirm-box" id="cancel-confirm">
+                <p><i class="bi bi-exclamation-triangle-fill me-2"></i>Are you sure you want to cancel? You'll keep access until 28th June 2026.</p>
+                <div class="d-flex gap-2 flex-wrap">
+                  <button class="btn btn-sm" style="background:#991b1b;color:#fff;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;" id="confirm-cancel-btn">Yes, cancel</button>
+                  <button class="btn btn-sm btn-ghost-dark" style="border-radius:999px;font-size:12px;" id="keep-sub-btn">Keep subscription</button>
+                </div>
+              </div>
+
+              <div class="cancelled-notice" id="cancelled-notice">
+                <i class="bi bi-info-circle-fill me-2"></i>
+                Your subscription has been cancelled. You will continue to have access until <strong>28th June 2026</strong>.
+              </div>
+            </div>
+
+            <!-- ── PAYMENTS PANEL ─────────────────────── -->
+            <div class="account-panel" id="panel-payments">
+              <p class="panel-eyebrow">Account</p>
+              <h1 class="panel-title">Payments</h1>
+              <p class="panel-subtitle">View your billing history and manage payment methods.</p>
+
+              <!-- Billing card -->
+              <div class="billing-card">
+                <h5>Billing Details</h5>
+                <p>Manage your billing details, payment methods, and invoices through our secure billing portal.</p>
+                <button class="btn btn-navy" onclick="alert('Billing portal coming soon.')">Update Billing Info</button>
+              </div>
+
+              <!-- Payments table -->
+              <div class="payments-table-wrap">
+                <table class="payments-table" id="payments-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Description</th>
+                      <th style="text-align:right">Amount</th>
+                      <th style="text-align:right">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="payments-tbody">
+                    <!-- Rows injected by JS -->
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="2">Total Paid</td>
+                      <td style="text-align:right" id="total-paid">—</td>
+                      <td></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+            <!-- end panels -->
+
+          </div><!-- col-lg-9 -->
+        </div><!-- row -->
+      </div><!-- container -->
+    </div><!-- account-wrapper -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* ── Panel navigation ──────────────────────────────── */
+      function switchPanel(target) {
+        document.querySelectorAll('.sidebar-nav a').forEach(l => l.classList.remove('active'));
+        const activeLink = document.querySelector(`.sidebar-nav a[data-panel="${target}"]`);
+        if (activeLink) activeLink.classList.add('active');
+        document.querySelectorAll('.account-panel').forEach(p => p.classList.remove('active'));
+        const panel = document.getElementById('panel-' + target);
+        if (panel) panel.classList.add('active');
+        closeSidebar();
+      }
+
+      document.querySelectorAll('.sidebar-nav a[data-panel]').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          switchPanel(link.dataset.panel);
+        });
+      });
+
+      // URL param support: Account.html?tab=payments
+      const params = new URLSearchParams(window.location.search);
+      const tab = params.get('tab');
+      if (tab) switchPanel(tab);
+
+      /* ── Mobile sidebar ────────────────────────────────── */
+      const sidebar = document.getElementById('accountSidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      const toggleBtn = document.getElementById('sidebarToggle');
+
+      function openSidebar() {
+        sidebar.classList.add('open');
+        backdrop.classList.add('visible');
+        setTimeout(() => backdrop.classList.add('active'), 10);
+      }
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('active');
+        setTimeout(() => backdrop.classList.remove('visible'), 200);
+      }
+
+      toggleBtn.addEventListener('click', openSidebar);
+      backdrop.addEventListener('click', closeSidebar);
+
+      /* ── Profile: greet + save ─────────────────────────── */
+      const firstNameInput = document.getElementById('firstName');
+      const greetName = document.getElementById('greet-name');
+      firstNameInput.addEventListener('input', () => {
+        greetName.textContent = firstNameInput.value.trim() || 'there';
+      });
+
+      document.getElementById('profile-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const btn = document.getElementById('save-btn');
+        btn.disabled = true;
+        btn.textContent = 'Saving…';
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.textContent = 'Save Profile';
+          const banner = document.getElementById('save-success');
+          banner.classList.add('show');
+          setTimeout(() => banner.classList.remove('show'), 4000);
+        }, 600);
+      });
+
+      /* ── Subscriptions: plan switching ────────────────── */
+      let currentPlan = 'silver';
+
+      function renderPlanCards() {
+        document.querySelectorAll('#plan-cards .plan-card').forEach(card => {
+          const plan = card.dataset.plan;
+          const btn = card.querySelector('button');
+          if (plan === currentPlan) {
+            card.classList.add('current');
+            btn.className = 'btn-current';
+            btn.textContent = 'Current Plan';
+          } else {
+            card.classList.remove('current');
+            btn.className = 'btn-choose';
+            btn.textContent = 'Choose Plan';
+          }
+        });
+
+        // Update summary card
+        const card = document.querySelector(`#plan-cards .plan-card[data-plan="${currentPlan}"]`);
+        const name = card.dataset.plan.charAt(0).toUpperCase() + card.dataset.plan.slice(1);
+        const price = card.dataset.price;
+        const tickets = card.dataset.tickets;
+        const annual = card.dataset.annual;
+
+        document.getElementById('sub-plan-title').textContent = name;
+        document.getElementById('sub-desc').textContent = `${name} — Monthly Subscription`;
+        document.getElementById('sub-amount').textContent = `£${price}.00 / month`;
+        document.getElementById('sub-tickets').textContent = `${tickets} × tickets`;
+        document.getElementById('sub-season-pass').textContent = `${name} Season Pass — £${annual}.00 / year`;
+      }
+
+      document.querySelectorAll('#plan-cards .plan-card').forEach(card => {
+        card.querySelector('button').addEventListener('click', () => {
+          if (card.dataset.plan === currentPlan) return;
+          const btn = card.querySelector('button');
+          btn.disabled = true;
+          btn.textContent = 'Switching…';
+          setTimeout(() => {
+            currentPlan = card.dataset.plan;
+            renderPlanCards();
+          }, 800);
+        });
+      });
+
+      /* ── Subscriptions: cancel flow ────────────────────── */
+      document.getElementById('cancel-link').addEventListener('click', () => {
+        document.getElementById('cancel-confirm').classList.toggle('show');
+      });
+      document.getElementById('keep-sub-btn').addEventListener('click', () => {
+        document.getElementById('cancel-confirm').classList.remove('show');
+      });
+      document.getElementById('confirm-cancel-btn').addEventListener('click', () => {
+        const btn = document.getElementById('confirm-cancel-btn');
+        btn.textContent = 'Cancelling…';
+        btn.disabled = true;
+        setTimeout(() => {
+          document.getElementById('cancel-confirm').classList.remove('show');
+          document.getElementById('cancelled-notice').classList.add('show');
+          document.getElementById('sub-status-badge').textContent = 'Cancelled';
+          document.getElementById('sub-status-badge').style.background = '#fee2e2';
+          document.getElementById('sub-status-badge').style.color = '#991b1b';
+          document.getElementById('cancel-link').style.display = 'none';
+        }, 800);
+      });
+
+      /* ── Payments: render table ────────────────────────── */
+      const payments = [
+        { id: 1, date: '01 May 2026', description: 'Silver — Monthly Subscription', amount: 10.00, status: 'paid' },
+        { id: 2, date: '01 Apr 2026', description: 'Silver — Monthly Subscription', amount: 10.00, status: 'paid' },
+        { id: 3, date: '01 Mar 2026', description: 'Silver — Monthly Subscription', amount: 10.00, status: 'paid' },
+        { id: 4, date: '01 Feb 2026', description: 'Silver — Monthly Subscription', amount: 10.00, status: 'failed' },
+        { id: 5, date: '01 Jan 2026', description: 'Silver — Monthly Subscription', amount: 10.00, status: 'paid' },
+      ];
+
+      function badgeHTML(status) {
+        if (status === 'paid')    return '<span class="badge-paid">Paid</span>';
+        if (status === 'failed')  return '<span class="badge-failed">Failed</span>';
+        if (status === 'pending') return '<span class="badge-pending">Pending</span>';
+        return '';
+      }
+
+      const tbody = document.getElementById('payments-tbody');
+      if (payments.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" class="empty-state"><i class="bi bi-receipt"></i>No payment history yet.</td></tr>`;
+      } else {
+        tbody.innerHTML = payments.map(p => `
+          <tr>
+            <td class="date-col">${p.date}</td>
+            <td>${p.description}</td>
+            <td class="amount-col">£${p.amount.toFixed(2)}</td>
+            <td class="status-col">${badgeHTML(p.status)}</td>
+          </tr>
+        `).join('');
+      }
+
+      // Total: only count paid transactions
+      const totalPaid = payments
+        .filter(p => p.status === 'paid')
+        .reduce((sum, p) => sum + p.amount, 0);
+      document.getElementById('total-paid').textContent = `£${totalPaid.toFixed(2)}`;
+    </script>
+  </body>
+</html>
