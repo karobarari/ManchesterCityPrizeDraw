@@ -1,585 +1,912 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Man City Prize Draw — Our City. Your Chance.</title>
-<meta name="description" content="Join thousands of Cityzens supporting our club's official charity. Win signed shirts, stadium access and once-in-a-lifetime moments — from £5/month." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Man City Prize Draw — Our City. Your Chance.</title>
+    <meta
+      name="description"
+      content="Join thousands of Cityzens supporting our club's official charity. Win signed shirts, stadium access and once-in-a-lifetime moments — from £5/month."
+    />
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
 
-</head>
-<body>
-
-<a href="#main" class="skip-link">Skip to main content</a>
-
-<!-- Trust strip -->
-<div class="trust-strip">
-  <div class="container">
-    <span><i class="bi bi-shield-check"></i> Licensed & regulated by the UK Gambling Commission</span>
-    <span><i class="bi bi-check2-circle"></i> Free postal entry route available</span>
-    <span><i class="bi bi-clipboard-check"></i> Independently audited draws</span>
-  </div>
-</div>
-
-<!-- Navbar — dark -->
-<nav class="navbar navbar-expand-lg navbar-custom sticky-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <span class="logo-mark">MC</span>
-      <span class="brand-text">
-        PRIZE DRAW
-        <small>OUR CITY · OUR CHARITY</small>
-      </span>
-    </a>
-
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <i class="bi bi-list fs-3"></i>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link" href="#prizes">Prizes</a></li>
-        <li class="nav-item"><a class="nav-link" href="#how">How It Works</a></li>
-        <li class="nav-item"><a class="nav-link" href="#tiers">Pricing</a></li>
-        <li class="nav-item"><a class="nav-link" href="#charity">The Charity</a></li>
-        <li class="nav-item"><a class="nav-link" href="#winners">Winners</a></li>
-        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-      </ul>
-      <div class="d-flex gap-2 align-items-center">
-        <div class="lang-switcher d-none d-lg-flex">
-          <a href="#" class="active">EN</a><span>·</span><a href="#">ES</a><span>·</span><a href="#">AR</a><span>·</span><a href="#">中文</a>
-        </div>
-        <a href="/account" class="btn btn-ghost-light">Sign In</a>
-        <a href="#tiers" class="btn btn-sky">Enter Draw</a>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<main id="main">
-
-<!-- Hero — dark floodlit -->
-<section class="hero">
-  <div class="container">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-7">
-        <div class="hero-tagline">★ THE OFFICIAL PRIZE DRAW</div>
-        <h1 class="hero-title mb-4">
-          This is our City.<br>
-          <em>This is your chance.</em>
-        </h1>
-        <p class="hero-sub mb-4">
-          Join thousands of Cityzens supporting our club's official charity. Win signed shirts, dressing-room access and once-in-a-lifetime moments while powering Manchester's biggest community programme.
-        </p>
-        <div class="d-flex flex-wrap gap-3 mb-3">
-          <a href="#tiers" class="btn btn-sky btn-lg-custom">Be part of it — from £5</a>
-          <a href="#prizes" class="btn btn-ghost-light btn-lg-custom">See this month's prizes</a>
-        </div>
-        <p class="price-line mb-0">Cancel anytime. <strong>87%</strong> of every subscription goes to City in the Community.</p>
-      </div>
-
-      <div class="col-lg-5">
-        <aside class="countdown-card" aria-label="Next draw countdown">
-          <div class="countdown-label">★ NEXT DRAW IN</div>
-          <div class="countdown-headline">June Draw — Squad Signed Shirt</div>
-          <div class="row g-2" role="timer" aria-live="polite">
-            <div class="col-3"><div class="countdown-unit"><div class="countdown-num" id="cd-days">00</div><div class="countdown-tag">Days</div></div></div>
-            <div class="col-3"><div class="countdown-unit"><div class="countdown-num" id="cd-hours">00</div><div class="countdown-tag">Hours</div></div></div>
-            <div class="col-3"><div class="countdown-unit"><div class="countdown-num" id="cd-mins">00</div><div class="countdown-tag">Mins</div></div></div>
-            <div class="col-3"><div class="countdown-unit"><div class="countdown-num" id="cd-secs">00</div><div class="countdown-tag">Secs</div></div></div>
-          </div>
-          <div class="countdown-date">
-            <span><span class="live-dot"></span>Live — 4,217 Cityzens entered</span>
-            <strong id="draw-date">30 June 2026, 8pm</strong>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRIZES — moved up -->
-<section class="section-light" id="prizes">
-  <div class="container">
-    <div class="row mb-5 align-items-end">
-      <div class="col-lg-8">
-        <div class="eyebrow eyebrow-dark mb-3">This month's line-up</div>
-        <h2 class="section-title">Win a piece of <em>our City.</em></h2>
-      </div>
-      <div class="col-lg-4">
-        <p class="section-lead">Four prizes drawn this month. One subscription enters you into all of them, every month.</p>
+    <!-- Trust strip -->
+    <div class="trust-strip">
+      <div class="container">
+        <span
+          ><i class="bi bi-shield-check"></i> Licensed & regulated by the UK
+          Gambling Commission</span
+        >
+        <span
+          ><i class="bi bi-check2-circle"></i> Free postal entry route
+          available</span
+        >
+        <span
+          ><i class="bi bi-clipboard-check"></i> Independently audited
+          draws</span
+        >
       </div>
     </div>
 
-    <!-- Featured prize -->
-    <article class="featured-prize reveal mb-5">
-      <div class="featured-badge">FEATURED</div>
-      <div class="row g-0 align-items-stretch">
-        <div class="col-lg-6 col-text d-flex flex-column justify-content-center">
-          <h3 class="mb-3">Squad Signed Shirt <em>2025/26 home.</em></h3>
-          <p class="mb-4">An iconic Manchester City 2025/26 home shirt, personally signed by every member of the Men's First Team. Comes framed, with a numbered certificate of authenticity.</p>
-          <div class="row featured-stats py-3 mb-4">
-            <div class="col-4"><div class="stat-num">£3,500</div><div class="stat-label">Retail Value</div></div>
-            <div class="col-4"><div class="stat-num">1 of 1</div><div class="stat-label">Unique Item</div></div>
-            <div class="col-4"><div class="stat-num">26</div><div class="stat-label">Signatures</div></div>
-          </div>
-          <a href="#tiers" class="btn btn-sky btn-lg-custom align-self-start">Enter to win this</a>
-        </div>
-        <div class="col-lg-6">
-            <img src="./images/cityherosept2555.png" alt="Photo of the squad signed shirt prize" class="featured-img">
-          
-        </div>
-      </div>
-    </article>
-
-    <div class="row g-4">
-      <div class="col-md-4">
-        <article class="prize-card reveal">
-          <div class="prize-img photo-placeholder photo-placeholder-shirt">
-            <span class="prize-tag">Signed</span>
-            <div class="photo-placeholder-content">
-            <img src="./images/Haaland.jpeg" alt="Haaland Shirt Photo" class="prize-photo">
-            </div>
-          </div>
-          <div class="prize-body">
-            <h4>Haaland Signed Club World Cup Shirt</h4>
-            <p>2025/26 Manchester City Club World Cup shirt, personally signed by Erling Haaland.</p>
-            <div class="d-flex justify-content-between align-items-center prize-meta">
-              <span>Retail value</span>
-              <strong>£1,200</strong>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-md-4">
-        <article class="prize-card reveal">
-          <div class="prize-img photo-placeholder photo-placeholder-shirt">
-            <span class="prize-tag">Signed</span>
-            <div class="photo-placeholder-content">
-             
-                <img src="./images/Rayan-Cherki.jpeg" alt="Cherki Shirt Photo" class="prize-photo">
-            </div>
-          </div>
-          <div class="prize-body">
-            <h4>Cherki Signed Home Shirt</h4>
-            <p>2025/26 Manchester City home shirt, personally signed by Rayan Cherki.</p>
-            <div class="d-flex justify-content-between align-items-center prize-meta">
-              <span>Retail value</span>
-              <strong>£850</strong>
-            </div>
-          </div>
-        </article>
-      </div>
-
-       <div class="col-md-4">
-        <article class="prize-card reveal">
-          <div class="prize-img photo-placeholder photo-placeholder-shirt">
-            <span class="prize-tag">Signed</span>
-            <div class="photo-placeholder-content">
-             
-                <img src="./images/phil-foden-elec-bl.webp" alt="Foden Shirt Photo" class="prize-photo">
-            </div>
-          </div>
-          <div class="prize-body">
-            <h4>Foden Signed Home Shirt</h4>
-            <p>2025/26 Manchester City home shirt, personally signed by Phil Foden.</p>
-            <div class="d-flex justify-content-between align-items-center prize-meta">
-              <span>Retail value</span>
-              <strong>£300</strong>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- How it works -->
-<section class="section-tinted" id="how">
-  <div class="container">
-    <div class="row mb-5 align-items-end">
-      <div class="col-lg-8">
-        <div class="eyebrow eyebrow-dark mb-3">How it works</div>
-        <h2 class="section-title">Three steps.<br><em>One iconic prize.</em></h2>
-      </div>
-      <div class="col-lg-4">
-        <p class="section-lead">No catches, no small print games. Subscribe to support the charity, and you're automatically entered into every monthly draw while your subscription is active.</p>
-      </div>
-    </div>
-    <div class="row g-4">
-      <div class="col-lg-4">
-        <article class="step-card reveal">
-          <div class="step-num">01</div>
-          <h3>Choose your tier</h3>
-          <p>Pick a monthly subscription from £5. Higher tiers earn more entries per draw and unlock the welcome pack.</p>
-        </article>
-      </div>
-      <div class="col-lg-4">
-        <article class="step-card reveal">
-          <div class="step-num">02</div>
-          <h3>You're entered automatically</h3>
-          <p>Every month, your entries are added to the draw. No forms, no remembering — sit back and we'll do the rest.</p>
-        </article>
-      </div>
-      <div class="col-lg-4">
-        <article class="step-card reveal">
-          <div class="step-num">03</div>
-          <h3>Winners notified within 48 hours</h3>
-          <p>Draws are audited by an independent third party. If you win, we'll email and call you directly. No public callouts.</p>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Tiers — dark, Cityzen naming, welcome pack visuals -->
-<section class="section-dark" id="tiers">
-  <div class="container">
-    <div class="row mb-5 align-items-end">
-      <div class="col-lg-8">
-        <div class="eyebrow eyebrow-light mb-3">Memberships</div>
-        <h2 class="section-title">Be part of <em>Our City.</em></h2>
-      </div>
-      <div class="col-lg-4">
-        <p class="section-lead">Every tier enters you into every prize, every month. The more you give, the more chances you have to win — and the more we can do.</p>
-      </div>
-    </div>
-    <div class="row g-4">
-      <div class="col-lg-4">
-        <article class="tier-card reveal">
-          <h3>Cityzen</h3>
-          <div class="tier-price"><sup>£</sup>5<small> /month</small></div>
-          <p class="text-muted-soft">For the casual fan who wants in.</p>
-
-          <div class="pack-preview">
-            <div class="pack-label">Welcome pack</div>
-            <div class="pack-empty">No physical pack on this tier</div>
-          </div>
-
-          <ul class="tier-features">
-            <li>1 entry per monthly draw</li>
-            <li>Entered into all 4 prizes</li>
-            <li>Monthly winners newsletter</li>
-            <li>Cancel any time</li>
-          </ul>
-          <a href="#" class="btn btn-ghost-light w-100">Choose Cityzen</a>
-        </article>
-      </div>
-
-      <div class="col-lg-4">
-        <article class="tier-card tier-featured reveal">
-          <div class="popular-badge">MOST POPULAR</div>
-          <h3>Cityzen+</h3>
-          <div class="tier-price"><sup>£</sup>10<small> /month</small></div>
-          <p>For the lifelong fan. The smart pick.</p>
-
-          <div class="pack-preview">
-            <div class="pack-label">Welcome pack includes</div>
-            <div class="pack-items">
-              <div class="pack-item" title="Member scarf"><i class="bi bi-bookmark-fill"></i></div>
-              <div class="pack-item" title="Pin badge"><i class="bi bi-patch-check-fill"></i></div>
-              <div class="pack-item" title="Member card"><i class="bi bi-credit-card-2-front"></i></div>
-              <div class="pack-item" title="Sticker set"><i class="bi bi-stickies"></i></div>
-            </div>
-          </div>
-
-          <ul class="tier-features">
-            <li>3 entries per monthly draw</li>
-            <li>Entered into all 4 prizes</li>
-            <li>Welcome pack + sticker set</li>
-            <li>Cancel any time</li>
-          </ul>
-          <a href="#" class="btn btn-navy w-100">Choose Cityzen+</a>
-        </article>
-      </div>
-
-      <div class="col-lg-4">
-        <article class="tier-card reveal">
-          <h3>Cityzen Elite</h3>
-          <div class="tier-price"><sup>£</sup>20<small> /month</small></div>
-          <p class="text-muted-soft">For the proper diehard.</p>
-
-          <div class="pack-preview">
-            <div class="pack-label">Premium pack includes</div>
-            <div class="pack-items">
-              <div class="pack-item" title="Premium scarf"><i class="bi bi-bookmark-fill"></i></div>
-              <div class="pack-item" title="Numbered pin"><i class="bi bi-patch-check-fill"></i></div>
-              <div class="pack-item" title="Member card"><i class="bi bi-credit-card-2-front"></i></div>
-              <div class="pack-item" title="Sticker set"><i class="bi bi-stickies"></i></div>
-              <div class="pack-item" title="Etihad street sign"><i class="bi bi-signpost-2-fill"></i></div>
-              <div class="pack-item" title="Quarterly bonus"><i class="bi bi-gift-fill"></i></div>
-            </div>
-          </div>
-
-          <ul class="tier-features">
-            <li>7 entries per monthly draw</li>
-            <li>Entered into all 4 prizes</li>
-            <li>Exclusive quarterly bonus draw</li>
-            <li>Premium welcome pack</li>
-          </ul>
-          <a href="#" class="btn btn-sky w-100">Choose Cityzen Elite</a>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Charity -->
-<section class="section-light" id="charity">
-  <div class="container">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-6">
-        <div class="charity-visual" aria-hidden="true">
-          <div></div><div></div><div></div>
-          <div></div>
-          <div>City in the<br>Community<span>since 1986</span></div>
-          <div></div>
-          <div></div><div></div><div></div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="eyebrow eyebrow-dark mb-3">Part of Cityzens Giving</div>
-        <h2 class="section-title mb-4">We use football to <em>change lives.</em></h2>
-        <p class="mb-3" style="color: var(--navy-soft);">City in the Community is Manchester City's official charity. For nearly 40 years, we've used the power of the club to engage Greater Manchester through programmes built around three pillars: <strong>healthy lives, healthy futures and healthy communities</strong>.</p>
-        <p class="mb-4" style="color: var(--navy-soft);">Your subscription doesn't just buy a chance to win — it directly funds school programmes, youth coaching, mental health workshops and food bank partnerships across the city.</p>
-        <a href="#" class="btn btn-ghost-dark mb-4">Read our impact report</a>
-        <div class="row pt-4" style="border-top: 1px solid var(--line);">
-          <div class="col-4"><div class="impact-num">26K+</div><div class="impact-label">People Reached</div></div>
-          <div class="col-4"><div class="impact-num">12</div><div class="impact-label">Active Programmes</div></div>
-          <div class="col-4"><div class="impact-num">£4.2M</div><div class="impact-label">Raised Last Year</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Winners -->
-<section class="section-tinted" id="winners">
-  <div class="container">
-    <div class="row mb-5 align-items-end">
-      <div class="col-lg-8">
-        <div class="eyebrow eyebrow-dark mb-3">Past winners</div>
-        <h2 class="section-title">Real Cityzens. <em>Real wins.</em></h2>
-      </div>
-      <div class="col-lg-4">
-        <p class="section-lead">Every draw independently verified. With permission, we share their stories.</p>
-      </div>
-    </div>
-    <div class="row g-3">
-      <div class="col-lg-3 col-md-6">
-        <article class="winner-card reveal">
-          <div class="winner-avatar mb-3">JM</div>
-          <div class="winner-name">James M.</div>
-          <div class="winner-prize mb-3">Squad Signed Shirt</div>
-          <p class="winner-quote mb-2">"Couldn't believe the call. It's framed in our living room now. Lifelong fan, lifelong moment."</p>
-          <div class="winner-date">April 2026 · Stockport</div>
-        </article>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <article class="winner-card reveal">
-          <div class="winner-avatar mb-3">SA</div>
-          <div class="winner-name">Sarah A.</div>
-          <div class="winner-prize mb-3">Etihad VIP Experience</div>
-          <p class="winner-quote mb-2">"Took my dad for his 70th. Pitchside, dressing room, the works. Best day of his life."</p>
-          <div class="winner-date">March 2026 · Bolton</div>
-        </article>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <article class="winner-card reveal">
-          <div class="winner-avatar mb-3">DK</div>
-          <div class="winner-name">Daniel K.</div>
-          <div class="winner-prize mb-3">De Bruyne Signed Boots</div>
-          <p class="winner-quote mb-2">"Subscribed for two months and won. Still shaking. Charity work is what got me to sign up."</p>
-          <div class="winner-date">February 2026 · Oldham</div>
-        </article>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <article class="winner-card reveal">
-          <div class="winner-avatar mb-3">RH</div>
-          <div class="winner-name">Rachel H.</div>
-          <div class="winner-prize mb-3">Foden Signed Home Shirt</div>
-          <p class="winner-quote mb-2">"Bought it as a gift for my husband — turned out to be the best Christmas present ever."</p>
-          <div class="winner-date">January 2026 · Wigan</div>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section-light" id="faq">
-  <div class="container">
-    <div class="row mb-5 align-items-end">
-      <div class="col-lg-8">
-        <div class="eyebrow eyebrow-dark mb-3">Got questions?</div>
-        <h2 class="section-title">Anything you need <em>to know.</em></h2>
-      </div>
-      <div class="col-lg-4">
-        <p class="section-lead">If we've missed anything, our team replies within one working day.</p>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <div class="accordion accordion-custom" id="faqAccordion">
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                <span>How are the draws conducted and verified?</span>
-                <span class="faq-icon">+</span>
-              </button>
-            </h3>
-            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">Every draw is run using a certified random number generator and verified by an independent third-party auditor. Records of each draw — including timestamps and entry counts — are published in our monthly transparency report.</div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                <span>Is there a free entry route?</span>
-                <span class="faq-icon">+</span>
-              </button>
-            </h3>
-            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">Yes. Under UK law, you can enter any draw free of charge by sending a postal entry to our registered address. Full instructions are on our Terms & Conditions page. Free entries have identical odds of winning.</div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                <span>What proportion of my subscription goes to charity?</span>
-                <span class="faq-icon">+</span>
-              </button>
-            </h3>
-            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">87% of every £5, £10 or £20 subscription goes directly to City in the Community. The remaining 13% covers prize costs, operational expenses, and audit fees. We publish a full breakdown in our annual impact report.</div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                <span>Can I cancel my Cityzen subscription?</span>
-                <span class="faq-icon">+</span>
-              </button>
-            </h3>
-            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">Yes. You can cancel from your account dashboard at any time, with no cancellation fees. You'll remain entered into draws until the end of your billing period.</div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                <span>Do I have to live in the UK to enter?</span>
-                <span class="faq-icon">+</span>
-              </button>
-            </h3>
-            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">Currently, the prize draw is open to UK residents aged 18 and over only. International fans can support City in the Community directly via the official charity site — we'll link you through.</div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
-                <span>What happens if I win?</span>
-                <span class="faq-icon">+</span>
-              </button>
-            </h3>
-            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">We contact winners directly by email and phone within 48 hours of the draw. Prizes are delivered free of charge to UK addresses. Experience-based prizes are arranged with you to fit a date that works.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Final CTA -->
-<section class="final-cta">
-  <div class="container">
-    <h2 class="mb-4">Be part of <em>Our City.</em><br>From £5.</h2>
-    <p class="mb-4 mx-auto" style="font-size: 18px; color: rgba(255, 255, 255, 0.7); max-width: 540px;">Join 12,000+ Cityzens helping our club's official charity reach further every month.</p>
-    <a href="#tiers" class="btn btn-sky btn-lg-custom">Enter the next draw</a>
-  </div>
-</section>
-
-</main>
-
-<!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row g-5 mb-5">
-      <div class="col-lg-5">
-        <a class="navbar-brand mb-3 d-inline-flex" href="#" style="color: var(--white);">
-          <span class="logo-mark me-2">MC</span>
+    <!-- Navbar — dark -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <span class="logo-mark">MC</span>
           <span class="brand-text">
             PRIZE DRAW
-            <small style="color: var(--sky);">OUR CITY · OUR CHARITY</small>
+            <small>OUR CITY · OUR CHARITY</small>
           </span>
         </a>
-        <p class="my-3">The official prize draw supporting Manchester City's charitable foundation, City in the Community. Operated by Raise Your Game on behalf of the charity.</p>
-        <div class="responsible-gambling">
-          <strong><i class="bi bi-info-circle me-1"></i> Play responsibly</strong>
-          You must be 18 or over to enter. If gambling stops being fun, get free, confidential support from <a href="https://www.begambleaware.org" style="color: var(--sky); text-decoration: underline;">BeGambleAware.org</a> or call the National Gambling Helpline on 0808 8020 133.
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <i class="bi bi-list fs-3"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#main">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#Login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#Account">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#prizes">Prizes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#how">How It Works</a>
+            </li>
+
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          </ul>
+          <div class="d-flex gap-2 align-items-center">
+            <div class="lang-switcher d-none d-lg-flex">
+              <a href="#" class="active">EN</a><span>·</span><a href="#">ES</a
+              ><span>·</span><a href="#">AR</a><span>·</span
+              ><a href="#">中文</a>
+            </div>
+            <a href="/account" class="btn btn-ghost-light">Sign In</a>
+            <a href="#tiers" class="btn btn-sky">Enter Draw</a>
+          </div>
         </div>
       </div>
+    </nav>
 
-      <div class="col-lg-2 col-md-4">
-        <h5>Quick Links</h5>
-        <ul>
-          <li><a href="#prizes">Current Prizes</a></li>
-          <li><a href="#how">How It Works</a></li>
-          <li><a href="#tiers">Memberships</a></li>
-          <li><a href="#winners">Past Winners</a></li>
-          <li><a href="#charity">The Charity</a></li>
-        </ul>
+    <main id="main">
+      <!-- Hero — dark floodlit -->
+      <section class="hero">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+              <div class="hero-tagline">★ THE OFFICIAL PRIZE DRAW</div>
+              <h1 class="hero-title mb-4">
+                This is our City.<br />
+                <em>This is your chance.</em>
+              </h1>
+              <p class="hero-sub mb-4">
+                Join thousands of Cityzens supporting our club's official
+                charity. Win signed shirts, dressing-room access and
+                once-in-a-lifetime moments while powering Manchester's biggest
+                community programme.
+              </p>
+              <div class="d-flex flex-wrap gap-3 mb-3">
+                <a href="#tiers" class="btn btn-sky btn-lg-custom"
+                  >Be part of it — from £5</a
+                >
+                <a href="#prizes" class="btn btn-ghost-light btn-lg-custom"
+                  >See this month's prizes</a
+                >
+              </div>
+              <p class="price-line mb-0">
+                Cancel anytime. <strong>87%</strong> of every subscription goes
+                to City in the Community.
+              </p>
+            </div>
+
+            <div class="col-lg-5">
+              <aside class="countdown-card" aria-label="Next draw countdown">
+                <div class="countdown-label">★ NEXT DRAW IN</div>
+                <div class="countdown-headline">
+                  June Draw — Squad Signed Shirt
+                </div>
+                <div class="row g-2" role="timer" aria-live="polite">
+                  <div class="col-3">
+                    <div class="countdown-unit">
+                      <div class="countdown-num" id="cd-days">00</div>
+                      <div class="countdown-tag">Days</div>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="countdown-unit">
+                      <div class="countdown-num" id="cd-hours">00</div>
+                      <div class="countdown-tag">Hours</div>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="countdown-unit">
+                      <div class="countdown-num" id="cd-mins">00</div>
+                      <div class="countdown-tag">Mins</div>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="countdown-unit">
+                      <div class="countdown-num" id="cd-secs">00</div>
+                      <div class="countdown-tag">Secs</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="countdown-date">
+                  <span
+                    ><span class="live-dot"></span>Live — 4,217 Cityzens
+                    entered</span
+                  >
+                  <strong id="draw-date">30 June 2026, 8pm</strong>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-light" id="prizes">
+        <div class="container">
+          <div class="row mb-5 align-items-end">
+            <div class="col-lg-8">
+              <div class="eyebrow eyebrow-dark mb-3">This month's line-up</div>
+              <h2 class="section-title">Win a piece of <em>our City.</em></h2>
+            </div>
+            <div class="col-lg-4">
+              <p class="section-lead">
+                Four prizes drawn this month. One subscription enters you into
+                all of them, every month.
+              </p>
+            </div>
+          </div>
+
+          <article class="featured-prize reveal mb-5">
+            <div class="featured-badge">FEATURED</div>
+            <div class="row g-0 align-items-stretch">
+              <div
+                class="col-lg-6 col-text d-flex flex-column justify-content-center"
+              >
+                <h3 class="mb-3">Squad Signed Shirt <em>2025/26 home.</em></h3>
+                <p class="mb-4">
+                  An iconic Manchester City 2025/26 home shirt, personally
+                  signed by every member of the Men's First Team. Comes framed,
+                  with a numbered certificate of authenticity.
+                </p>
+                <div class="row featured-stats py-3 mb-4">
+                  <div class="col-4">
+                    <div class="stat-num">£3,500</div>
+                    <div class="stat-label">Retail Value</div>
+                  </div>
+                  <div class="col-4">
+                    <div class="stat-num">1 of 1</div>
+                    <div class="stat-label">Unique Item</div>
+                  </div>
+                  <div class="col-4">
+                    <div class="stat-num">26</div>
+                    <div class="stat-label">Signatures</div>
+                  </div>
+                </div>
+                <a
+                  href="#tiers"
+                  class="btn btn-sky btn-lg-custom align-self-start"
+                  >Enter to win this</a
+                >
+              </div>
+              <div class="col-lg-6">
+                <img
+                  src="./images/cityherosept2555.png"
+                  alt="Photo of the squad signed shirt prize"
+                  class="featured-img"
+                />
+              </div>
+            </div>
+          </article>
+
+          <div class="row g-4">
+            <div class="col-md-4">
+              <article class="prize-card reveal">
+                <div
+                  class="prize-img photo-placeholder photo-placeholder-shirt"
+                >
+                  <span class="prize-tag">Signed</span>
+                  <div class="photo-placeholder-content">
+                    <img
+                      src="./images/Haaland.jpeg"
+                      alt="Haaland Shirt Photo"
+                      class="prize-photo"
+                    />
+                  </div>
+                </div>
+                <div class="prize-body">
+                  <h4>Haaland Signed Club World Cup Shirt</h4>
+                  <p>
+                    2025/26 Manchester City Club World Cup shirt, personally
+                    signed by Erling Haaland.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center prize-meta"
+                  >
+                    <span>Retail value</span>
+                    <strong>£1,200</strong>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-md-4">
+              <article class="prize-card reveal">
+                <div
+                  class="prize-img photo-placeholder photo-placeholder-shirt"
+                >
+                  <span class="prize-tag">Signed</span>
+                  <div class="photo-placeholder-content">
+                    <img
+                      src="./images/Rayan-Cherki.jpeg"
+                      alt="Cherki Shirt Photo"
+                      class="prize-photo"
+                    />
+                  </div>
+                </div>
+                <div class="prize-body">
+                  <h4>Cherki Signed Home Shirt</h4>
+                  <p>
+                    2025/26 Manchester City home shirt, personally signed by
+                    Rayan Cherki.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center prize-meta"
+                  >
+                    <span>Retail value</span>
+                    <strong>£850</strong>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-md-4">
+              <article class="prize-card reveal">
+                <div
+                  class="prize-img photo-placeholder photo-placeholder-shirt"
+                >
+                  <span class="prize-tag">Signed</span>
+                  <div class="photo-placeholder-content">
+                    <img
+                      src="./images/phil-foden-elec-bl.webp"
+                      alt="Foden Shirt Photo"
+                      class="prize-photo"
+                    />
+                  </div>
+                </div>
+                <div class="prize-body">
+                  <h4>Foden Signed Home Shirt</h4>
+                  <p>
+                    2025/26 Manchester City home shirt, personally signed by
+                    Phil Foden.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center prize-meta"
+                  >
+                    <span>Retail value</span>
+                    <strong>£300</strong>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tinted" id="how">
+        <div class="container">
+          <div class="row mb-5 align-items-end">
+            <div class="col-lg-8">
+              <div class="eyebrow eyebrow-dark mb-3">How it works</div>
+              <h2 class="section-title">
+                Three steps.<br /><em>One iconic prize.</em>
+              </h2>
+            </div>
+            <div class="col-lg-4">
+              <p class="section-lead">
+                No catches, no small print games. Subscribe to support the
+                charity, and you're automatically entered into every monthly
+                draw while your subscription is active.
+              </p>
+            </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-lg-4">
+              <article class="step-card reveal">
+                <div class="step-num">01</div>
+                <h3>Choose your tier</h3>
+                <p>
+                  Pick a monthly subscription from £5. Higher tiers earn more
+                  entries per draw and unlock the welcome pack.
+                </p>
+              </article>
+            </div>
+            <div class="col-lg-4">
+              <article class="step-card reveal">
+                <div class="step-num">02</div>
+                <h3>You're entered automatically</h3>
+                <p>
+                  Every month, your entries are added to the draw. No forms, no
+                  remembering — sit back and we'll do the rest.
+                </p>
+              </article>
+            </div>
+            <div class="col-lg-4">
+              <article class="step-card reveal">
+                <div class="step-num">03</div>
+                <h3>Winners notified within 48 hours</h3>
+                <p>
+                  Draws are audited by an independent third party. If you win,
+                  we'll email and call you directly. No public callouts.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tiers — dark, naming, welcome pack visuals -->
+      <section class="section-dark" id="tiers">
+        <div class="container">
+          <div class="row mb-5 align-items-end">
+            <div class="col-lg-8">
+              <div class="eyebrow eyebrow-light mb-3">Memberships</div>
+              <h2 class="section-title">Be part of <em>Our City.</em></h2>
+            </div>
+            <div class="col-lg-4">
+              <p class="section-lead">
+                Every tier enters you into every prize, every month. The more
+                you give, the more chances you have to win — and the more we can
+                do.
+              </p>
+            </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-lg-4">
+              <article class="tier-card reveal">
+                <h3>Cityzen</h3>
+                <div class="tier-price">£5<small> /month</small></div>
+                <p class="text-muted-soft">For the casual fan who wants in.</p>
+
+                <div class="pack-preview">
+                  <div class="pack-label">Welcome pack</div>
+                  <div class="pack-empty">No physical pack on this tier</div>
+                </div>
+
+                <ul class="tier-features">
+                  <li>1 entry per monthly draw</li>
+                  <li>Cancel any time</li>
+                </ul>
+                <a href="#" class="btn btn-ghost-light w-100">Choose Cityzen</a>
+              </article>
+            </div>
+
+            <div class="col-lg-4">
+              <article class="tier-card tier-featured reveal">
+                <div class="popular-badge">MOST POPULAR</div>
+                <h3>Cityzen+</h3>
+                <div class="tier-price">£10<small> /month</small></div>
+                <p>For the lifelong fan. The smart pick.</p>
+
+                <div class="pack-preview">
+                  <div class="pack-label">Welcome pack includes</div>
+                  <div class="pack-items">
+                    <div class="pack-item" title="Member scarf">
+                      <i class="bi bi-bookmark-fill"></i>
+                    </div>
+                    <div class="pack-item" title="Pin badge">
+                      <i class="bi bi-patch-check-fill"></i>
+                    </div>
+                    <div class="pack-item" title="Member card">
+                      <i class="bi bi-credit-card-2-front"></i>
+                    </div>
+                    <div class="pack-item" title="Sticker set">
+                      <i class="bi bi-stickies"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <ul class="tier-features">
+                  <li>3 entries per monthly draw</li>
+                  <li>Cancel any time</li>
+                </ul>
+                <a href="#" class="btn btn-navy w-100">Choose Cityzen+</a>
+              </article>
+            </div>
+
+            <div class="col-lg-4">
+              <article class="tier-card reveal">
+                <h3>Cityzen Elite</h3>
+                <div class="tier-price">£20<small> /month</small></div>
+                <p class="text-muted-soft">For the proper diehard.</p>
+
+                <div class="pack-preview">
+                  <div class="pack-label">Premium pack includes</div>
+                  <div class="pack-items">
+                    <div class="pack-item" title="Premium scarf">
+                      <i class="bi bi-bookmark-fill"></i>
+                    </div>
+                    <div class="pack-item" title="Numbered pin">
+                      <i class="bi bi-patch-check-fill"></i>
+                    </div>
+                    <div class="pack-item" title="Member card">
+                      <i class="bi bi-credit-card-2-front"></i>
+                    </div>
+                    <div class="pack-item" title="Sticker set">
+                      <i class="bi bi-stickies"></i>
+                    </div>
+                    <div class="pack-item" title="Etihad street sign">
+                      <i class="bi bi-signpost-2-fill"></i>
+                    </div>
+                    <div class="pack-item" title="Quarterly bonus">
+                      <i class="bi bi-gift-fill"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <ul class="tier-features">
+                  <li>7 entries per monthly draw</li>
+                  <li>Cancel any time</li>
+                </ul>
+                <a href="#" class="btn btn-sky w-100">Choose Cityzen Elite</a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Charity -->
+      <section class="section-light" id="charity">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+              <div class="charity-visual" aria-hidden="true">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div>City in the<br />Community<span>since 1986</span></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="eyebrow eyebrow-dark mb-3">
+                Part of Cityzens Giving
+              </div>
+              <h2 class="section-title mb-4">
+                We use football to <em>change lives.</em>
+              </h2>
+              <p class="mb-3" style="color: var(--navy-soft)">
+                City in the Community is Manchester City's official charity. For
+                nearly 40 years, we've used the power of the club to engage
+                Greater Manchester through programmes built around three
+                pillars:
+                <strong
+                  >healthy lives, healthy futures and healthy
+                  communities</strong
+                >.
+              </p>
+              <p class="mb-4" style="color: var(--navy-soft)">
+                Your subscription doesn't just buy a chance to win — it directly
+                funds school programmes, youth coaching, mental health workshops
+                and food bank partnerships across the city.
+              </p>
+              <a href="#" class="btn btn-ghost-dark mb-4"
+                >Read our impact report</a
+              >
+              <div class="row pt-4" style="border-top: 1px solid var(--line)">
+                <div class="col-4">
+                  <div class="impact-num">26K+</div>
+                  <div class="impact-label">People Reached</div>
+                </div>
+                <div class="col-4">
+                  <div class="impact-num">12</div>
+                  <div class="impact-label">Active Programmes</div>
+                </div>
+                <div class="col-4">
+                  <div class="impact-num">£4.2M</div>
+                  <div class="impact-label">Raised Last Year</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Winners -->
+      <section class="section-tinted" id="winners">
+        <div class="container">
+          <div class="row mb-5 align-items-end">
+            <div class="col-lg-8">
+              <div class="eyebrow eyebrow-dark mb-3">Past winners</div>
+              <h2 class="section-title">Real Cityzens. <em>Real wins.</em></h2>
+            </div>
+            <div class="col-lg-4">
+              <p class="section-lead">
+                Every draw independently verified. With permission, we share
+                their stories.
+              </p>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-lg-3 col-md-6">
+              <article class="winner-card reveal">
+                <div class="winner-avatar mb-3">JM</div>
+                <div class="winner-name">James M.</div>
+                <div class="winner-prize mb-3">Squad Signed Shirt</div>
+                <p class="winner-quote mb-2">
+                  "Couldn't believe the call. It's framed in our living room
+                  now. Lifelong fan, lifelong moment."
+                </p>
+                <div class="winner-date">April 2026 · Stockport</div>
+              </article>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <article class="winner-card reveal">
+                <div class="winner-avatar mb-3">SA</div>
+                <div class="winner-name">Sarah A.</div>
+                <div class="winner-prize mb-3">Etihad VIP Experience</div>
+                <p class="winner-quote mb-2">
+                  "Took my dad for his 70th. Pitchside, dressing room, the
+                  works. Best day of his life."
+                </p>
+                <div class="winner-date">March 2026 · Bolton</div>
+              </article>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <article class="winner-card reveal">
+                <div class="winner-avatar mb-3">DK</div>
+                <div class="winner-name">Daniel K.</div>
+                <div class="winner-prize mb-3">De Bruyne Signed Boots</div>
+                <p class="winner-quote mb-2">
+                  "Subscribed for two months and won. Still shaking. Charity
+                  work is what got me to sign up."
+                </p>
+                <div class="winner-date">February 2026 · Oldham</div>
+              </article>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <article class="winner-card reveal">
+                <div class="winner-avatar mb-3">RH</div>
+                <div class="winner-name">Rachel H.</div>
+                <div class="winner-prize mb-3">Foden Signed Home Shirt</div>
+                <p class="winner-quote mb-2">
+                  "Bought it as a gift for my husband — turned out to be the
+                  best Christmas present ever."
+                </p>
+                <div class="winner-date">January 2026 · Wigan</div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section-light" id="faq">
+        <div class="container">
+          <div class="row mb-5 align-items-end">
+            <div class="col-lg-8">
+              <div class="eyebrow eyebrow-dark mb-3">Got questions?</div>
+              <h2 class="section-title">Anything you need <em>to know.</em></h2>
+            </div>
+            <div class="col-lg-4">
+              <p class="section-lead">
+                If we've missed anything, our team replies within one working
+                day.
+              </p>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="accordion accordion-custom" id="faqAccordion">
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq1"
+                    >
+                      <span>How are the draws conducted and verified?</span>
+                      <span class="faq-icon">+</span>
+                    </button>
+                  </h3>
+                  <div
+                    id="faq1"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#faqAccordion"
+                  >
+                    <div class="accordion-body">
+                      Every draw is run using a certified random number
+                      generator and verified by an independent third-party
+                      auditor. Records of each draw — including timestamps and
+                      entry counts — are published in our monthly transparency
+                      report.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq2"
+                    >
+                      <span>Is there a free entry route?</span>
+                      <span class="faq-icon">+</span>
+                    </button>
+                  </h3>
+                  <div
+                    id="faq2"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#faqAccordion"
+                  >
+                    <div class="accordion-body">
+                      Yes. Under UK law, you can enter any draw free of charge
+                      by sending a postal entry to our registered address. Full
+                      instructions are on our Terms & Conditions page. Free
+                      entries have identical odds of winning.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq3"
+                    >
+                      <span
+                        >What proportion of my subscription goes to
+                        charity?</span
+                      >
+                      <span class="faq-icon">+</span>
+                    </button>
+                  </h3>
+                  <div
+                    id="faq3"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#faqAccordion"
+                  >
+                    <div class="accordion-body">
+                      87% of every £5, £10 or £20 subscription goes directly to
+                      City in the Community. The remaining 13% covers prize
+                      costs, operational expenses, and audit fees. We publish a
+                      full breakdown in our annual impact report.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq4"
+                    >
+                      <span>Can I cancel my Cityzen subscription?</span>
+                      <span class="faq-icon">+</span>
+                    </button>
+                  </h3>
+                  <div
+                    id="faq4"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#faqAccordion"
+                  >
+                    <div class="accordion-body">
+                      Yes. You can cancel from your account dashboard at any
+                      time, with no cancellation fees. You'll remain entered
+                      into draws until the end of your billing period.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq5"
+                    >
+                      <span>Do I have to live in the UK to enter?</span>
+                      <span class="faq-icon">+</span>
+                    </button>
+                  </h3>
+                  <div
+                    id="faq5"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#faqAccordion"
+                  >
+                    <div class="accordion-body">
+                      Currently, the prize draw is open to UK residents aged 18
+                      and over only. International fans can support City in the
+                      Community directly via the official charity site — we'll
+                      link you through.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq6"
+                    >
+                      <span>What happens if I win?</span>
+                      <span class="faq-icon">+</span>
+                    </button>
+                  </h3>
+                  <div
+                    id="faq6"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#faqAccordion"
+                  >
+                    <div class="accordion-body">
+                      We contact winners directly by email and phone within 48
+                      hours of the draw. Prizes are delivered free of charge to
+                      UK addresses. Experience-based prizes are arranged with
+                      you to fit a date that works.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="final-cta">
+        <div class="container">
+          <h2 class="mb-4">Be part of <em>Our City.</em><br />From £5.</h2>
+          <p
+            class="mb-4 mx-auto"
+            style="
+              font-size: 18px;
+              color: rgba(255, 255, 255, 0.7);
+              max-width: 540px;
+            "
+          >
+            Join 12,000+ Cityzens helping our club's official charity reach
+            further every month.
+          </p>
+          <a href="#tiers" class="btn btn-sky btn-lg-custom"
+            >Enter the next draw</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row g-5 mb-5">
+          <div class="col-lg-5">
+            <a
+              class="navbar-brand mb-3 d-inline-flex"
+              href="#"
+              style="color: var(--white)"
+            >
+              <span class="logo-mark me-2">MC</span>
+              <span class="brand-text">
+                PRIZE DRAW
+                <small style="color: var(--sky)">OUR CITY · OUR CHARITY</small>
+              </span>
+            </a>
+            <p class="my-3">
+              The official prize draw supporting Manchester City's charitable
+              foundation, City in the Community. Operated by Raise Your Game on
+              behalf of the charity.
+            </p>
+            <div class="responsible-gambling">
+              <strong
+                ><i class="bi bi-info-circle me-1"></i> Play responsibly</strong
+              >
+              You must be 18 or over to enter. If gambling stops being fun, get
+              free, confidential support from
+              <a
+                href="https://www.begambleaware.org"
+                style="color: var(--sky); text-decoration: underline"
+                >BeGambleAware.org</a
+              >
+              or call the National Gambling Helpline on 0808 8020 133.
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="#prizes">Current Prizes</a></li>
+              <li><a href="#how">How It Works</a></li>
+              <li><a href="#tiers">Memberships</a></li>
+              <li><a href="#winners">Past Winners</a></li>
+              <li><a href="#charity">The Charity</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <h5>Account</h5>
+            <ul>
+              <li><a href="/account">Sign In / My Account</a></li>
+              <li><a href="#">Update Subscription</a></li>
+              <li><a href="#">Cancel Subscription</a></li>
+              <li><a href="#">Free Entry Route</a></li>
+              <li><a href="#">Claim a Prize</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <h5>Legal & Trust</h5>
+            <ul>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Prize T&Cs</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-3"
+        >
+          <div>
+            <strong>Operator:</strong> Raise Your Game Ltd · Registered in
+            England 12345678 · Gambling Commission Licence No.
+            000-000000-N-000000
+          </div>
+          <div>© 2026 Raise Your Game. All rights reserved.</div>
+        </div>
       </div>
+    </footer>
 
-      <div class="col-lg-2 col-md-4">
-        <h5>Account</h5>
-        <ul>
-          <li><a href="/account">Sign In / My Account</a></li>
-          <li><a href="#">Update Subscription</a></li>
-          <li><a href="#">Cancel Subscription</a></li>
-          <li><a href="#">Free Entry Route</a></li>
-          <li><a href="#">Claim a Prize</a></li>
-        </ul>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <h5>Legal & Trust</h5>
-        <ul>
-          <li><a href="#">Terms & Conditions</a></li>
-          <li><a href="#">Prize T&Cs</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Cookie Policy</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-3">
-      <div><strong>Operator:</strong> Raise Your Game Ltd · Registered in England 12345678 · Gambling Commission Licence No. 000-000000-N-000000</div>
-      <div>© 2026 Raise Your Game. All rights reserved.</div>
-    </div>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="./index.js" defer></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./index.js" defer></script>
+  </body>
 </html>
